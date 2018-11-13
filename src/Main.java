@@ -11,7 +11,7 @@ public class Main
 		
 		System.out.println("Start!");
 		task1();
-		//task2();
+		task2();
 		//task3();
 		//task4();
 		//task5();
@@ -23,15 +23,16 @@ public class Main
 	public static void task1()	{
 		System.out.println("---------- Task 1 ----------");
 		List<String> ids = IDs.getIDs();
-		System.out.print("Students ids: ");
+		System.out.println("Students ids: ");
 		for (String id : ids)
 			System.out.print(id + " | ");
+		System.out.println("");
 	}
 	
 	public static void task2()	{
 		System.out.println("---------- Task 2 ----------");
-		List<ASearch> 		solvers 	= new ArrayList<ASearch>();
-		BreadthFirstSearch 	bfs 		= new BreadthFirstSearch();
+		List<ASearch> solvers = new ArrayList<ASearch>();
+		BreadthFirstSearch 	bfs = new BreadthFirstSearch();
 		solvers.add(bfs);
 		solveInstances(solvers, "tile3x3");
 	}
@@ -70,6 +71,7 @@ public class Main
 	
 	public static void solveInstances(List<ASearch> solvers,String 	instancesType) {
 		try {
+			int good = 0;
 			long			totalTime = 0;
 			List<String> 	instances = getInstances(instancesType);
 			for (String instance : instances){
@@ -88,6 +90,7 @@ public class Main
 						System.out.println("Time:  " + (finishTime - startTime)/1000000.0 + " ms");
 						System.out.println(solution);
 						totalTime += (finishTime - startTime)/1000000.0;
+						good++;
 					}
 					else				// invalid solution
 						System.out.println("Invalid solution.");
@@ -95,6 +98,7 @@ public class Main
 				System.out.println("");
 			}
 			System.out.println("Total time:  " + totalTime/60000.0 + " min");
+			System.out.println("Completed " + good + "/" + instances.size());
 			System.out.println("");
 		} 
 		catch (IOException e){

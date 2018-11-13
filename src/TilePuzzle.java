@@ -81,18 +81,18 @@ public class TilePuzzle implements IProblem
 	    
 		// Read the file
 	    while (sc.hasNextLine())    {
-	    	String cuurentLine = sc.nextLine();
-	    	if (cuurentLine.contains("Size:")){				// Puzzle size
+	    	String currentLine = sc.nextLine();
+	    	if (currentLine.contains("Size:")){				// Puzzle size
 
-	    		cuurentLine = sc.nextLine();
-	    		_size 		= Integer.parseInt(cuurentLine);
+	    		currentLine = sc.nextLine();
+	    		_size 		= Integer.parseInt(currentLine);
 	    		_tilePuzzle = new int [_size][_size];
 	    	}
-	    	else if (cuurentLine.contains("Puzzle:")){		// Puzzle instance
+	    	else if (currentLine.contains("Puzzle:")){		// Puzzle instance
 
 	    		for (int row = 0; row < _size; row ++){
-	    			cuurentLine 	= sc.nextLine();
-	    			String[] tokens = cuurentLine.split("\\|");
+	    			currentLine 	= sc.nextLine();
+	    			String[] tokens = currentLine.split("\\|");
 	    			for (int col = 0; col < _size; col ++){
 	    				_tilePuzzle[row][col] = Integer.parseInt(tokens[col]);
 	    				if (_tilePuzzle[row][col] == 0)	{

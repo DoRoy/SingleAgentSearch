@@ -149,8 +149,8 @@ public class TilePuzzleState implements IProblemState
 	public String toString(){
 		int size = _problem._size;
 		String toPrint = "";
-		for(int row = 0; row < size; row ++)		{
-			for (int col = 0; col<size;col++)			{
+		for(int row = 0; row < size; row ++){
+			for (int col = 0; col<size;col++){
 				toPrint += _tilePuzzle[row][col] + "|";
 			}
 			toPrint += "\n";
