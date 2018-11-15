@@ -11,8 +11,8 @@ public class Main
 		
 		System.out.println("Start!");
 		task1();
-		task2();
-		//task3();
+//		task2();
+		task3();
 		//task4();
 		//task5();
 		//task6();
