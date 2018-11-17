@@ -10,9 +10,9 @@ public class Main
 	public static void main(String [ ] args)	{
 		
 		System.out.println("Start!");
-		task1();
-		task2();
-		//task3();
+//		task1();
+//		task2();
+		task3();
 		//task4();
 		//task5();
 		//task6();
