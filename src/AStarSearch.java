@@ -1,13 +1,10 @@
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class AStarSearch   extends ASearch{
 	// Define lists here ...
 
-
 	PriorityQueue<ASearchNode> openList;
-	HashSet<ASearchNode> closedList;
+	ArrayList<ASearchNode> closedList;
 
 	@Override
 	public String getSolverName()
@@ -17,15 +14,15 @@ public class AStarSearch   extends ASearch{
 
 	@Override
 	public ASearchNode createSearchRoot(IProblemState problemState) {
-		ASearchNode newNode = new BlindSearchNode(problemState);
+		HeuristicSearchNode newNode = new HeuristicSearchNode(problemState);
 		return newNode;
 	}
 
 	@Override
 	public void initLists() {
 		Comparator<ASearchNode> comparator = new fValueComparator();
-		openList = new PriorityQueue<>(10,comparator);
-		closedList = new HashSet<>();
+		openList = new PriorityQueue<>(1000,comparator);
+		closedList = new ArrayList<>(1000);
 	}
 
 	@Override
@@ -57,8 +54,7 @@ public class AStarSearch   extends ASearch{
 	}
 
 	@Override
-	public int openSize()
-	{
+	public int openSize(){
 		return openList.size();
 	}
 
@@ -68,8 +64,7 @@ public class AStarSearch   extends ASearch{
 		return best;
 	}
 
-	class fValueComparator implements Comparator<ASearchNode>
-	{
+	class fValueComparator implements Comparator<ASearchNode>{
 		@Override
 		public int compare(ASearchNode x, ASearchNode y){
 
@@ -85,7 +80,7 @@ public class AStarSearch   extends ASearch{
 			if (x.getH() > y.getH()){
 				return 1;
 			}
-			return 0;
+			return 1;
 		}
 	}
 }

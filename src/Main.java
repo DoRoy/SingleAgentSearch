@@ -12,10 +12,10 @@ public class Main
 		System.out.println("Start!");
 //		task1();
 //		task2();
-//		task3();
+		task3();
 //		task4();
-//		task5();
-		task6();
+		task5();
+//		task6();
 		System.out.println("");
 		System.out.println("Done!");
 	}
@@ -78,7 +78,7 @@ public class Main
 				System.out.println("---- " + instance.substring(instance.indexOf("tile_")) + " ----");
 				TilePuzzle 			problem 	= new TilePuzzle(instance);
 				for (ASearch solver : solvers){
-					System.out.println("Solver: " + solver.getSolverName());
+//					System.out.println("Solver: " + solver.getSolverName());
 					long 				startTime 	= System.nanoTime();
 					List<IProblemMove> 	solution 	= solver.solve(problem);
 					long 				finishTime 	= System.nanoTime();

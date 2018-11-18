@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.PriorityQueue;
@@ -7,7 +8,7 @@ public class UniformCostSearch extends ASearch
 	// Define lists here ...
 	
 	PriorityQueue<ASearchNode> openList;
-	HashSet<ASearchNode> closedList;
+	ArrayList<ASearchNode> closedList;
 
 	@Override
 	public String getSolverName() 
@@ -25,7 +26,7 @@ public class UniformCostSearch extends ASearch
 	public void initLists() {
 		Comparator<ASearchNode> comparator = new fValueComparator();
 		openList = new PriorityQueue<>(10,comparator);
-		closedList = new HashSet<>();
+		closedList = new ArrayList<>();
 	}
 
 	@Override
