@@ -8,12 +8,14 @@ abstract public class ASearch
 		IProblemState 		problemState	= problem.getProblemState();
 		ASearchNode			goal			= abstractSearch(problemState);
 		List<IProblemMove> 	solution		= goalNodeToSolutionPath(goal);
+		System.out.println("open: "+openSize());
 		return solution;
 	}
 	
 	private	ASearchNode	abstractSearch(	IProblemState problemState	)	{
 		initLists();
 		ASearchNode Vs 		= createSearchRoot(problemState);
+		System.out.println("Root.H: " + Vs.getH());
 		ASearchNode current	= null;
 		addToOpen(Vs);
 		

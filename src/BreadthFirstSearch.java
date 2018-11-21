@@ -29,12 +29,7 @@ public class BreadthFirstSearch  extends ASearch
 	@Override
 	public ASearchNode getOpen(	ASearchNode node) {
 		if(isOpen(node)) {
-			for (ASearchNode currNode : openList) {
-				if (node.equals(currNode)) {
-					openList.remove(currNode);
-					return currNode;
-				}
-			}
+			return node;
 		}
 		return null;
 	}
@@ -67,11 +62,8 @@ public class BreadthFirstSearch  extends ASearch
 	@Override
 	public ASearchNode getBest() {
 		ASearchNode ans = openList.remove();
-
-		//addToClosed(ans);
 		return ans;
 	}
-
 
 
 

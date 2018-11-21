@@ -1,15 +1,18 @@
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
-public class UniformCostSearch   extends ASearch {
+public class UniformCostSearch extends ASearch
+{
 	// Define lists here ...
 
 	PriorityQueue<ASearchNode> openList;
-	HashSet<ASearchNode> closedList;
+	ArrayList<ASearchNode> closedList;
 
 	@Override
-	public String getSolverName() {
+	public String getSolverName()
+	{
 		return "UCS";
 	}
 
@@ -23,45 +26,40 @@ public class UniformCostSearch   extends ASearch {
 	public void initLists() {
 		Comparator<ASearchNode> comparator = new fValueComparator();
 		openList = new PriorityQueue<>(10,comparator);
-		closedList = new HashSet<>();
+		closedList = new ArrayList<>();
 	}
 
 	@Override
-	public ASearchNode getOpen(ASearchNode node) {
+	public ASearchNode getOpen(	ASearchNode node) {
 		if(isOpen(node)) {
-			for (ASearchNode currNode : openList) {
-				if (node.equals(currNode)) {
-					openList.remove(currNode);
-					return currNode;
-				}
-			}
+			return node;
 		}
 		return null;
 	}
 
 	@Override
-	public boolean isOpen(ASearchNode node) {
+	public boolean isOpen(	ASearchNode node) {
 		return openList.contains(node);
 	}
 
 	@Override
-	public boolean isClosed(ASearchNode node) {
+	public boolean isClosed(ASearchNode node) 	{
 		return closedList.contains(node);
 	}
 
 	@Override
-	public void addToOpen(ASearchNode node) {
+	public void addToOpen(	ASearchNode node) {
 		openList.add(node);
-
 	}
 
 	@Override
-	public void addToClosed(ASearchNode node) {
+	public void addToClosed	(ASearchNode node) {
 		closedList.add(node);
 	}
 
 	@Override
-	public int openSize() {
+	public int openSize()
+	{
 		return openList.size();
 	}
 
@@ -71,26 +69,23 @@ public class UniformCostSearch   extends ASearch {
 		return best;
 	}
 
-
-}
-
-class fValueComparator implements Comparator<ASearchNode>
-{
-	@Override
-	public int compare(ASearchNode x, ASearchNode y)
+	class fValueComparator implements Comparator<ASearchNode>
 	{
+		@Override
+		public int compare(ASearchNode x, ASearchNode y){
 
-		if (x.getF() < y.getF())
-		{
-			return -1;
+			if (x.getF() < y.getF()){
+				return -1;
+			}
+			if (x.getF() > y.getF()){
+				return 1;
+			}
+			return 0;
 		}
-		if (x.getF() > y.getF())
-		{
-			return 1;
-		}
-		return 0;
 	}
 }
+
+
 
 
 
