@@ -10,12 +10,12 @@ public class Main
 	public static void main(String [ ] args)	{
 		
 		System.out.println("Start!");
-//		task1();
-//		task2();
+		task1();
+		task2();
 		task3();
-//		task4();
+		task4();
 		task5();
-//		task6();
+		task6();
 		System.out.println("");
 		System.out.println("Done!");
 	}
@@ -75,7 +75,7 @@ public class Main
 			long			totalTime = 0;
 			List<String> 	instances = getInstances(instancesType);
 			for (String instance : instances){
-				System.out.println("---- " + instance.substring(instance.indexOf("tile_")) + " ----");
+//				System.out.println("---- " + instance.substring(instance.indexOf("tile_")) + " ----");
 				TilePuzzle 			problem 	= new TilePuzzle(instance);
 				for (ASearch solver : solvers){
 //					System.out.println("Solver: " + solver.getSolverName());
@@ -85,17 +85,17 @@ public class Main
 					double 				cost 		= checkSolution(problem, solution);
 					if (cost >= 0){	// valid solution
 						// printSolution(problem, solution);
-						System.out.println("Cost:  " + cost);
-						System.out.println("Moves: " + solution.size());
-						System.out.println("Time:  " + (finishTime - startTime)/1000000.0 + " ms");
-						System.out.println(solution);
+//						System.out.println("Cost:  " + cost);
+//						System.out.println("Moves: " + solution.size());
+//						System.out.println("Time:  " + (finishTime - startTime)/1000000.0 + " ms");
+//						System.out.println(solution);
 						totalTime += (finishTime - startTime)/1000000.0;
 						good++;
 					}
 					else				// invalid solution
 						System.out.println("Invalid solution.");
 				}
-				System.out.println("");
+//				System.out.println("");
 			}
 			System.out.println("Total time:  " + totalTime/60000.0 + " min");
 			System.out.println("Completed " + good + "/" + instances.size());

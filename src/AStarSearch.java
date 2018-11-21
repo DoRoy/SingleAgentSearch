@@ -4,7 +4,7 @@ public class AStarSearch   extends ASearch{
 	// Define lists here ...
 
 	PriorityQueue<ASearchNode> openList;
-	ArrayList<ASearchNode> closedList;
+	HashMap<String,ASearchNode> closedList;
 
 	@Override
 	public String getSolverName()
@@ -22,7 +22,7 @@ public class AStarSearch   extends ASearch{
 	public void initLists() {
 		Comparator<ASearchNode> comparator = new fValueComparator();
 		openList = new PriorityQueue<>(1000,comparator);
-		closedList = new ArrayList<>(1000);
+		closedList = new HashMap<>(1000);
 	}
 
 	@Override
@@ -40,7 +40,8 @@ public class AStarSearch   extends ASearch{
 
 	@Override
 	public boolean isClosed(ASearchNode node) 	{
-		return closedList.contains(node);
+
+		return closedList.containsKey(node._currentProblemState.toString());
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class AStarSearch   extends ASearch{
 
 	@Override
 	public void addToClosed	(ASearchNode node) {
-		closedList.add(node);
+		closedList.put(node._currentProblemState.toString(),node);
 	}
 
 	@Override
@@ -80,7 +81,7 @@ public class AStarSearch   extends ASearch{
 			if (x.getH() > y.getH()){
 				return 1;
 			}
-			return 1;
+			return 0;
 		}
 	}
 }

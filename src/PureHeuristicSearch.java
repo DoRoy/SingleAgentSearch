@@ -1,12 +1,10 @@
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class PureHeuristicSearch  extends ASearch
 {
 	// Define lists here ...
 	PriorityQueue<ASearchNode> openList;
-	HashSet<ASearchNode> closedList;
+	HashMap<String,ASearchNode> closedList;
 	
 	@Override
 	public String getSolverName() 
@@ -24,7 +22,7 @@ public class PureHeuristicSearch  extends ASearch
 	public void initLists() {
 		Comparator<ASearchNode> comparator = new fValueComparator();
 		openList = new PriorityQueue<>(10,comparator);
-		closedList = new HashSet<>();
+		closedList = new HashMap<>(1000);
 	}
 
 	@Override
@@ -42,7 +40,8 @@ public class PureHeuristicSearch  extends ASearch
 
 	@Override
 	public boolean isClosed(ASearchNode node) 	{
-		return closedList.contains(node);
+		return closedList.containsKey(node._currentProblemState.toString());
+
 	}
 
 	@Override
@@ -52,7 +51,7 @@ public class PureHeuristicSearch  extends ASearch
 
 	@Override
 	public void addToClosed	(ASearchNode node) {
-		closedList.add(node);
+		closedList.put(node._currentProblemState.toString(),node);
 	}
 
 	@Override
@@ -72,10 +71,10 @@ public class PureHeuristicSearch  extends ASearch
 		@Override
 		public int compare(ASearchNode x, ASearchNode y) {
 
-			if (x.getF() < y.getF()) {
+			if (x.getH() < y.getH()) {
 				return -1;
 			}
-			if (x.getF() > y.getF()) {
+			if (x.getH() > y.getH()) {
 				return 1;
 			}
 			return 0;
